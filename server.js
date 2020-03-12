@@ -15,7 +15,7 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static('public'))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -41,13 +41,20 @@ app.get("/", function(req, res) {
     if (err) {
         return res.status(500).end();
     }
+
     res.render("index", { burgers: data });
     });
 });
 
-app.get("/:id", function(req,res) {
-    connection.query("SELECT * FROM burgers WHERE id = ?", [req.params.id], function(err, data) {
-
+app.put("/api/burger/:id", function(req,res) {
+    const id = req.params.id
+    connection.query("UPDATE burgers SET devoured=?  WHERE id = ?", [1,id], function(err, data) {
+        if(err){
+            res.sendStatus(418)
+            console.log(err)
+            return
+        }
+        res.sendStatus(200)
     })
 });
 

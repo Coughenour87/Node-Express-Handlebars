@@ -1,13 +1,29 @@
-<ul>
-    {{}}
-    <li>
-        <p>
-        <p>
-        <p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
-        </p>
-        </p>
-        </p>
-    </li>
-    {{}}
-</ul>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <li>
+                    {{burger_name}}
+                    <button value={{id}} id='devour'>eat-da-burger</button>
+                </li>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-sm">
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    {{burger_name}}
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+</div>

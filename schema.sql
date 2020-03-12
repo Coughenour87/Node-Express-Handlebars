@@ -5,8 +5,7 @@ USE burgers;
 CREATE TABLE burgers (
 	id Int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	burger_name VARCHAR( 255 ) NOT NULL,
-	devoured VARCHAR( 255 ) NOT NULL
+	devoured BOOLEAN DEFAULT FALSE,
+    createdAt TIMESTAMP NOT NULL
 );
  
-INSERT INTO burgers (name, devoured)
-VALUES ('testBurger', false);
