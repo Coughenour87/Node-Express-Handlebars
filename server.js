@@ -36,7 +36,6 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Root get route
 app.get("/", function(req, res) {
   connection.query("SELECT * FROM burgers;", function(err, data) {
     if (err) {
@@ -48,6 +47,18 @@ app.get("/", function(req, res) {
 
 app.get("/:id", function(req,res) {
     connection.query("SELECT * FROM burgers WHERE id = ?", [req.params.id], function(err, data) {
-        
+
     })
-})
+});
+
+app.post("/", function(req, res) {
+    connection.query("", [req.body.burgers], function(err, result) {
+        if (err) throw err;
+        res.redirect("/");
+    });
+});
+
+
+app.listen(PORT, function() {
+    console.log("" + PORT);
+});
