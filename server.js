@@ -67,5 +67,5 @@ app.post("/", function(req, res) {
 
 
 app.listen(PORT, function() {
-    console.log("" + PORT);
+    console.log("Listening on: http://localhost:" + PORT);
 });
