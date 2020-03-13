@@ -2,7 +2,7 @@
 
 ![Photo of finished Product](public/assets/images/fin.png)
 
-[Deployed Website] https://coughenour87.github.io/Node-Express-Handlebars/.
+[Deployed Website] https://github.com/Coughenour87/Node-Express-Handlebars
 
 [Deployed Website] https://whispering-ocean-93447.herokuapp.com/
 
