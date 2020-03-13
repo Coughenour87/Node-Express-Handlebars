@@ -46,6 +46,16 @@ app.get("/", function(req, res) {
     });
 });
 
+app.get("/api/burgers", function(req, res) {
+    connection.query("SELECT * FROM burgers;", function(err, data) {
+      if (err) {
+        return res.status(500).end();
+      }
+  
+      res.json(data);
+    });
+  });
+
 app.put("/api/burger/:id", function(req,res) {
     const id = req.params.id
     connection.query("UPDATE burgers SET devoured=?  WHERE id = ?", [1,id], function(err, data) {
@@ -59,11 +69,14 @@ app.put("/api/burger/:id", function(req,res) {
 });
 
 app.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burgers], function(err, result) {
-        if (err) throw err;
-        res.redirect("/");
+    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function(err, result) {
+      if (err) {
+        return res.status(500).end();
+      }
+      res.json({ id: result.insertId });
+      console.log({ id: result.insertId });
     });
-});
+  });
 
 
 app.listen(PORT, function() {
