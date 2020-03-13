@@ -20,11 +20,11 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var connection = mysql.createConnection({
-  host: "localhost",
+  host: "us-cdbr-iron-east-04.cleardb.net",
   port: 3306,
-  user: "root",
-  password: "Daphne93!",
-  database: "burgers"
+  user: "b819dd0f252eb8",
+  password: "31e8bca2",
+  database: "heroku_afaa91490c07e95"
 });
 
 connection.connect(function(err) {
