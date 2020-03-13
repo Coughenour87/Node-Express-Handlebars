@@ -58,8 +58,8 @@ app.put("/api/burger/:id", function(req,res) {
     })
 });
 
-app.post("/", function(req, res) {
-    connection.query("", [req.body.burgers], function(err, result) {
+app.post("/api/burgers", function(req, res) {
+    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burgers], function(err, result) {
         if (err) throw err;
         res.redirect("/");
     });
