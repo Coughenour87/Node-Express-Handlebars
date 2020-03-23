@@ -18,14 +18,20 @@ app.use(express.json());
 app.use(express.static('public'))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+let connection 
 
-var connection = mysql.createConnection({
-  host: "us-cdbr-iron-east-04.cleardb.net",
-  port: 3306,
-  user: "b819dd0f252eb8",
-  password: "31e8bca2",
-  database: "heroku_afaa91490c07e95"
-});
+if (process.env.JAWSDB_URL){
+  connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else{
+  connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "Daphne93!",
+    database: "burgers"
+  })
+}
+
 
 connection.connect(function(err) {
   if (err) {
