@@ -75,9 +75,11 @@ app.put("/api/burger/:id", function(req,res) {
 });
 
 app.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO burgers (burger) VALUES (?)", [req.body.burger], function(err, result) {
+  console.log('got some info for ya!'+ req.body.burger)
+    connection.query("INSERT INTO burgers (burger_name) VALUES (?)", req.body.burger, function(err, result) {
       if (err) {
-        return res.status(500).end();
+        console.log(err)
+        //return res.status(500).end();
       }
       res.json({ id: result.insertId });
       console.log({ id: result.insertId });

@@ -1,4 +1,5 @@
-$('#devour').click(function(){
+console.log('loaded')
+$('.devour').click(function(){
     console.log('test')
   const id = $(this).val()
   $.ajax({
@@ -10,3 +11,20 @@ $('#devour').click(function(){
       }
   })
 })
+
+$("#addburger").on("submit", function(event) {
+  event.preventDefault();
+  console.log("hello");
+  var newBurger = {
+      burger: $("#theBurgerName").val().trim()
+  };
+  $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+  }).then(
+      function() {
+        console.log("added new burger");
+        location.reload();
+      }
+  );
+});
